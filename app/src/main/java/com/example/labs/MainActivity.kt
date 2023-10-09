@@ -1,5 +1,6 @@
 package com.example.labs
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -18,8 +19,10 @@ class MainActivity : AppCompatActivity() {
         val view = binding.root
         setContentView(view)
         initRecyclerView()
+//        binding.btnList.setOnClickListener {
+//            startSecondActivity()
+//        }
     }
-
 
     private fun initRecyclerView() {
         recyclerViewAdapter = RecyclerViewAdapter({
@@ -45,5 +48,8 @@ class MainActivity : AppCompatActivity() {
             ProductData("Сметана", 40, 4),
             ProductData("Картопля", 5, 4)
         )
+    }
+
+    private fun startSecondActivity() {
     }
 }
