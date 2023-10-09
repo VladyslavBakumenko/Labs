@@ -21,6 +21,6 @@ class SecondActivity : AppCompatActivity() {
     }
 
     private fun parseArgs() {
-        binding.tvList.text = intent.getStringExtra("test")
+        binding.image.setImageResource(intent.getIntExtra("test", 0))
     }
 }

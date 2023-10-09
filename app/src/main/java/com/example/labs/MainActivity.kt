@@ -3,6 +3,7 @@ package com.example.labs
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.labs.adapter.RecyclerViewAdapter
 import com.example.labs.databinding.ActivityMainBinding
@@ -12,7 +13,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
     private lateinit var recyclerViewAdapter: RecyclerViewAdapter
     private var totalCost = 0
-    private var selectedProductsList = mutableListOf<String>()
+    private var selectedPlacesList = mutableListOf<String>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -20,21 +21,17 @@ class MainActivity : AppCompatActivity() {
         val view = binding.root
         setContentView(view)
         initRecyclerView()
-        binding.btnList.setOnClickListener {
+        binding.startOtherActivity.setOnClickListener {
             startSecondActivity()
         }
     }
 
     private fun initRecyclerView() {
-        recyclerViewAdapter = RecyclerViewAdapter({
-            totalCost += it
-            binding.tvTotalCost.text = "Total cost = $totalCost"
-            addToList(it)
-        }, {
-            totalCost -= it
-            binding.tvTotalCost.text = "Total cost = $totalCost"
-            removeFromList(it)
-        })
+        recyclerViewAdapter = RecyclerViewAdapter { state, placeName ->
+            if (state) addToList(placeName)
+            else removeFromList(placeName)
+            binding.tvPlaces.text = selectedPlacesList.toString()
+        }
 
         with(binding.rvProducts) {
             layoutManager = LinearLayoutManager(this@MainActivity)
@@ -45,38 +42,34 @@ class MainActivity : AppCompatActivity() {
 
     private fun createList(): List<ProductData> {
         return listOf(
-            ProductData("Молоко", 30, 4),
-            ProductData("Хліб", 20, 4),
-            ProductData("Вода", 1, 4),
-            ProductData("Сметана", 40, 4),
-            ProductData("Картопля", 5, 4)
+            ProductData("Морське Окo", 30, 4, R.drawable.first),
+            ProductData("Хохоловска Долина", 20, 4, R.drawable.second),
+            ProductData("Національний парк Словінські", 1, 4, R.drawable.thirdh),
+            ProductData("Мазурські озера", 40, 4, R.drawable.fourth),
         )
     }
 
-    private fun removeFromList(cost: Int) {
-        when (cost) {
-            30 -> selectedProductsList.remove("Молоко")
-            20 -> selectedProductsList.remove("Хліб")
-            1 -> selectedProductsList.remove("Вода")
-            40 -> selectedProductsList.remove("Сметана")
-            5 -> selectedProductsList.remove("Картопля")
-        }
+    private fun addToList(placeName: String) {
+        selectedPlacesList.add(placeName)
     }
 
-    private fun addToList(cost: Int) {
-        when (cost) {
-            30 -> selectedProductsList.add("Молоко")
-            20 -> selectedProductsList.add("Хліб")
-            1 -> selectedProductsList.add("Вода")
-            40 -> selectedProductsList.add("Сметана")
-            5 -> selectedProductsList.add("Картопля")
-        }
+    private fun removeFromList(placeName: String) {
+        selectedPlacesList.remove(placeName)
     }
 
     private fun startSecondActivity() {
-        val intent = Intent(this, SecondActivity::class.java).apply {
-            putExtra("test", selectedProductsList.toString())
+        if (selectedPlacesList.isNotEmpty()) {
+            val id = when (selectedPlacesList.first()) {
+                "Морське Окo" -> R.drawable.first
+                "Хохоловска Долина" -> R.drawable.second
+                "Національний парк Словінські" -> R.drawable.thirdh
+                "Мазурські озера" -> R.drawable.fourth
+                else -> 4
+            }
+            val intent = Intent(this, SecondActivity::class.java).apply {
+                putExtra("test", id)
+            }
+            startActivity(intent)
         }
-        startActivity(intent)
     }
 }
