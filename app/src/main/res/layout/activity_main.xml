@@ -13,27 +13,17 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintBottom_toTopOf="@+id/tvTotalCost"
+        app:layout_constraintBottom_toTopOf="@+id/btnCreateNew"
         android:layout_marginBottom="8dp"/>
 
-    <TextView
-        android:id="@+id/tvTotalCost"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        android:layout_marginBottom="16dp"
-        android:layout_marginEnd="8dp"
-        android:text="Total cost = 0"/>
-
     <Button
-        android:id="@+id/btnList"
+        android:id="@+id/btnCreateNew"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
         android:layout_marginStart="8dp"
-        android:text="Check list"/>
+        android:text="Create new printer"/>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -21,6 +21,7 @@ class SecondActivity : AppCompatActivity() {
     }
 
     private fun parseArgs() {
-        binding.tvList.text = intent.getStringExtra("test")
+        binding.tvPrinter.text = intent.getStringExtra("printer")
+        binding.tvCost.text = (intent.getIntExtra("cost", 0)).toString()
     }
 }
