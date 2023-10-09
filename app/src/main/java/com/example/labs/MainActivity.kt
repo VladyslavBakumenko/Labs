@@ -12,6 +12,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
     private lateinit var recyclerViewAdapter: RecyclerViewAdapter
     private var totalCost = 0
+    private var selectedProductsList = mutableListOf<String>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -19,18 +20,20 @@ class MainActivity : AppCompatActivity() {
         val view = binding.root
         setContentView(view)
         initRecyclerView()
-//        binding.btnList.setOnClickListener {
-//            startSecondActivity()
-//        }
+        binding.btnList.setOnClickListener {
+            startSecondActivity()
+        }
     }
 
     private fun initRecyclerView() {
         recyclerViewAdapter = RecyclerViewAdapter({
             totalCost += it
             binding.tvTotalCost.text = "Total cost = $totalCost"
+            addToList(it)
         }, {
             totalCost -= it
             binding.tvTotalCost.text = "Total cost = $totalCost"
+            removeFromList(it)
         })
 
         with(binding.rvProducts) {
@@ -50,6 +53,30 @@ class MainActivity : AppCompatActivity() {
         )
     }
 
+    private fun removeFromList(cost: Int) {
+        when (cost) {
+            30 -> selectedProductsList.remove("Молоко")
+            20 -> selectedProductsList.remove("Хліб")
+            1 -> selectedProductsList.remove("Вода")
+            40 -> selectedProductsList.remove("Сметана")
+            5 -> selectedProductsList.remove("Картопля")
+        }
+    }
+
+    private fun addToList(cost: Int) {
+        when (cost) {
+            30 -> selectedProductsList.add("Молоко")
+            20 -> selectedProductsList.add("Хліб")
+            1 -> selectedProductsList.add("Вода")
+            40 -> selectedProductsList.add("Сметана")
+            5 -> selectedProductsList.add("Картопля")
+        }
+    }
+
     private fun startSecondActivity() {
+        val intent = Intent(this, SecondActivity::class.java).apply {
+            putExtra("test", selectedProductsList.toString())
+        }
+        startActivity(intent)
     }
 }
