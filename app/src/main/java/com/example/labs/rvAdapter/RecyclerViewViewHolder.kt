@@ -20,10 +20,10 @@ class RecyclerViewViewHolder(
             root.setOnClickListener {
                 addProductClickListener(entitie)
             }
-            binding.tvEntityName.text = "App name = ${entitie.brand}"
-            binding.tvEntityCost.text = "Target audience = ${entitie.screenSize}"
-            binding.tvProductQuantity.text = "Visitors during the day = ${entitie.madeDate}"
-            binding.tvEntityData.text = "Sell cost = ${entitie.model}"
+            binding.tvEntityName.text = "Назва телефону -> ${entitie.brand}"
+            binding.tvEntityCost.text = "Дата виходу телефона -> ${entitie.screenSize}"
+            binding.tvProductQuantity.text = "Об'єм ОЗУ -> ${entitie.madeDate}"
+            binding.tvEntityData.text = "Процесор -> ${entitie.model}"
         }
     }
 }

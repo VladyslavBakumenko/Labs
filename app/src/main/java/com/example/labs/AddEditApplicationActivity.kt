@@ -7,6 +7,7 @@ import android.view.View
 import android.widget.Toast
 import androidx.room.Room
 import com.example.labs.databinding.AddTvActivityLayoutBinding
+import com.google.android.material.snackbar.Snackbar
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -47,7 +48,7 @@ class AddEditApplicationActivity : Activity() {
                 scope.launch {
                     database?.televisionDao()?.delete(editedEntity)
                 }
-                Toast.makeText(this, "Application видалено", Toast.LENGTH_SHORT).show()
+                Snackbar.make(findViewById(android.R.id.content), "Телефон видалено", Snackbar.LENGTH_SHORT).show();
                 this.onBackPressed()
             }
         }
@@ -77,8 +78,9 @@ class AddEditApplicationActivity : Activity() {
                 }
             }
             if (editedEntity == null) {
-                Toast.makeText(this, "Application додано", Toast.LENGTH_SHORT).show()
+                Snackbar.make(findViewById(android.R.id.content), "Телефон додано до бази данних", Snackbar.LENGTH_SHORT).show();
             } else {
+                Snackbar.make(findViewById(android.R.id.content), "Телефон змінено", Snackbar.LENGTH_SHORT).show();
                 Toast.makeText(this, "Application змінено", Toast.LENGTH_SHORT).show()
             }
             this.onBackPressed()
