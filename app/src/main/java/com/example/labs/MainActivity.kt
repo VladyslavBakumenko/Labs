@@ -42,8 +42,11 @@ class MainActivity : AppCompatActivity() {
 
     private fun createList(): List<ProductData> {
         return listOf(
-            ProductData("HP DeskJet 2620", 30, 4),
+            ProductData("Ноутбук Lenovo ThinkPad P15v Gen 3 ", 30, 4),
+            ProductData("Ноутбук Lenovo ThinkPad X280 ", 30, 4),
             ProductData("Brother HL-1110E", 20, 4),
+            ProductData("БФП Canon i-SENSYS MF655Cdw", 20, 4),
+            ProductData("БФП Canon i-SENSYS MF752Cdw", 20, 4),
         )
     }
 

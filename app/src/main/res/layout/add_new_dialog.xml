@@ -29,7 +29,7 @@
             android:textColor="@color/black"
             android:textColorHint="@color/black"
             android:textSize="20sp"
-            android:hint="Printer" />
+            android:hint="Назва офісної техніки" />
 
         <EditText
             android:id="@+id/etLastName"
@@ -40,15 +40,15 @@
             android:textColor="@color/black"
             android:textColorHint="@color/black"
             android:textSize="20sp"
-            android:hint="Cost" />
+            android:hint="Вартість" />
 
         <Button
             android:id="@+id/btnSave"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="40dp"
-            android:layout_marginBottom="80dp"
-            android:text="Create"
+            android:layout_marginBottom="20dp"
+            android:text="додати в список покупок"
             android:textSize="14sp" />
 
     </LinearLayout>

@@ -18,18 +18,10 @@ class RecyclerViewViewHolder(
             root.setOnClickListener {
                 printerListener(productData.product, productData.cost)
             }
-            ivMinus.visibility = View.INVISIBLE
-            ivPlus.visibility = View.INVISIBLE
             tvProductName.text = productData.product
-            tvProductCost.text = "Cost = ${productData.cost}"
-            ivMinus.setOnClickListener {
-                if (selectedItems != 0) {
-                    selectedItems--
-                    tvProductQuantity.text = "Selected items count = $selectedItems"
-                }
-            }
-            ivPlus.setOnClickListener {
-                selectedItems++
+            tvProductCost.text = "Вартість = ${productData.cost}"
+            if (selectedItems != 0) {
+                selectedItems--
                 tvProductQuantity.text = "Selected items count = $selectedItems"
             }
         }
