@@ -6,6 +6,7 @@ import android.os.Bundle
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.labs.adapter.RecyclerViewAdapter
 import com.example.labs.databinding.ActivityMainBinding
+import java.lang.StringBuilder
 
 class MainActivity : AppCompatActivity() {
 
@@ -45,37 +46,58 @@ class MainActivity : AppCompatActivity() {
 
     private fun createList(): List<ProductData> {
         return listOf(
-            ProductData("Молоко", 30, 4),
-            ProductData("Хліб", 20, 4),
-            ProductData("Вода", 1, 4),
-            ProductData("Сметана", 40, 4),
-            ProductData("Картопля", 5, 4)
+            ProductData("Coca cola", 30, 4),
+            ProductData("Sprite", 20, 4),
+            ProductData("Fanta", 1, 4),
+            ProductData("Mojo", 40, 4),
+            ProductData("Mirinda", 5, 4)
         )
     }
 
     private fun removeFromList(cost: Int) {
         when (cost) {
-            30 -> selectedProductsList.remove("Молоко")
-            20 -> selectedProductsList.remove("Хліб")
-            1 -> selectedProductsList.remove("Вода")
-            40 -> selectedProductsList.remove("Сметана")
-            5 -> selectedProductsList.remove("Картопля")
+            30 -> selectedProductsList.remove("Coca cola")
+            20 -> selectedProductsList.remove("Sprite")
+            1 -> selectedProductsList.remove("Fanta")
+            40 -> selectedProductsList.remove("Mojo")
+            5 -> selectedProductsList.remove("Mirinda")
         }
     }
 
     private fun addToList(cost: Int) {
         when (cost) {
-            30 -> selectedProductsList.add("Молоко")
-            20 -> selectedProductsList.add("Хліб")
-            1 -> selectedProductsList.add("Вода")
-            40 -> selectedProductsList.add("Сметана")
-            5 -> selectedProductsList.add("Картопля")
+            30 -> selectedProductsList.add("Coca cola")
+            20 -> selectedProductsList.add("Sprite")
+            1 -> selectedProductsList.add("Fanta")
+            40 -> selectedProductsList.add("Mojo")
+            5 -> selectedProductsList.add("Mirinda")
         }
     }
 
     private fun startSecondActivity() {
+
+        val resultString = StringBuilder()
+        var colaCounter = 0
+        var spriteCounter = 0
+        var fantaCounter = 0
+        var mojoCounter = 0
+        var mirindaCounter = 0
+        for (i in selectedProductsList) {
+            when (i) {
+                "Coca cola" -> colaCounter++
+                "Sprite" -> spriteCounter++
+                "Fanta" -> fantaCounter++
+                "Mojo" -> mojoCounter++
+                "Mirinda" -> mirindaCounter++
+            }
+        }
+        resultString.append("$colaCounter X Coca cola " +
+                " $spriteCounter X Sprite" +
+                " $fantaCounter X Fanta" +
+                " $mojoCounter X Mojo" +
+                " $mirindaCounter X Mirinda")
         val intent = Intent(this, SecondActivity::class.java).apply {
-            putExtra("test", selectedProductsList.toString())
+            putExtra("test", resultString.toString())
         }
         startActivity(intent)
     }

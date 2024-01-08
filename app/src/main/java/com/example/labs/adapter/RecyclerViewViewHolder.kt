@@ -39,11 +39,11 @@ class RecyclerViewViewHolder(
 
     private fun setProductImage(productData: ProductData) {
         when (productData.product) {
-            "Молоко" -> binding.productImage.setImageDrawable(context.getDrawable(R.drawable.milk))
-            "Хліб" -> binding.productImage.setImageDrawable(context.getDrawable(R.drawable.bread))
-            "Вода" -> binding.productImage.setImageDrawable(context.getDrawable(R.drawable.wather))
-            "Сметана" -> binding.productImage.setImageDrawable(context.getDrawable(R.drawable.smetana))
-            "Картопля" -> binding.productImage.setImageDrawable(context.getDrawable(R.drawable.potato))
+            "Coca cola" -> binding.productImage.setImageDrawable(context.getDrawable(R.drawable.first))
+            "Sprite" -> binding.productImage.setImageDrawable(context.getDrawable(R.drawable.second))
+            "Fanta" -> binding.productImage.setImageDrawable(context.getDrawable(R.drawable.thirdh))
+            "Mojo" -> binding.productImage.setImageDrawable(context.getDrawable(R.drawable.fourth))
+            "Mirinda" -> binding.productImage.setImageDrawable(context.getDrawable(R.drawable.fiveth))
         }
     }
 }
