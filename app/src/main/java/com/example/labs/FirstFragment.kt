@@ -25,7 +25,7 @@ class FirstFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         SecondFragment.onClickInterface = object : SecondFragment.OnClick {
             override fun onClick() {
-                binding?.textView?.text = "Текст на фрагменті було змінено"
+                binding?.textView?.text = "Текст було змінено"
             }
 
             override fun onClickWebView() {
@@ -37,7 +37,7 @@ class FirstFragment : Fragment() {
                     settings.allowFileAccess = true;
                     settings.javaScriptEnabled = true
                     settings.setSupportZoom(true)
-                    loadUrl("https://jetiq.vntu.edu.ua/")
+                    loadUrl("https://www.linkedin.com/feed/")
                 }
             }
         }
