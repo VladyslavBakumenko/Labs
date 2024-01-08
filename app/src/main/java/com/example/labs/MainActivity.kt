@@ -22,6 +22,16 @@ class MainActivity : AppCompatActivity() {
         setNumbersClickListeners()
         setOperatorsClickListeners()
         setEqualsClickListener()
+        setClearButtonListener()
+    }
+
+    private fun setClearButtonListener() {
+        binding.buttonClear.setOnClickListener {
+            operand1 = 0.0
+            currentOperator = ""
+            isNewOperation = true
+            binding.editText.text.clear()
+        }
     }
 
     private fun setNumbersClickListeners() {
@@ -72,7 +82,7 @@ class MainActivity : AppCompatActivity() {
 
         binding.buttonSquare.setOnClickListener {
             val number = binding.editText.text.toString().toDouble()
-            binding.editText.setText((number * number).toString())
+            binding.editText.setText((sqrt(number)).toString())
         }
     }
 
