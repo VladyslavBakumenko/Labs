@@ -19,7 +19,7 @@ class MainActivity : AppCompatActivity() {
 
     private fun setClickListener() {
         binding.changeTextButton.setOnClickListener {
-            binding.tv.text = "Text changed"
+            binding.tv.text = "Текст було змінено"
             binding.root.background =  AppCompatResources.getDrawable(this, R.color.red)
         }
     }
