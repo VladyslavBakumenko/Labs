@@ -42,10 +42,11 @@ class MainActivity : AppCompatActivity() {
 
     private fun createList(): List<ProductData> {
         return listOf(
-            ProductData("Морське Окo", 30, 4, R.drawable.first),
-            ProductData("Хохоловска Долина", 20, 4, R.drawable.second),
-            ProductData("Національний парк Словінські", 1, 4, R.drawable.thirdh),
-            ProductData("Мазурські озера", 40, 4, R.drawable.fourth),
+            ProductData("Coca cola", 30, 4, R.drawable.first),
+            ProductData("Sprite", 20, 4, R.drawable.second),
+            ProductData("Fanta", 1, 4, R.drawable.thirdh),
+            ProductData("Mojo", 40, 4, R.drawable.fourth),
+            ProductData("Mirinda", 40, 4, R.drawable.fiveth),
         )
     }
 
@@ -60,11 +61,12 @@ class MainActivity : AppCompatActivity() {
     private fun startSecondActivity() {
         if (selectedPlacesList.isNotEmpty()) {
             val id = when (selectedPlacesList.first()) {
-                "Морське Окo" -> R.drawable.first
-                "Хохоловска Долина" -> R.drawable.second
-                "Національний парк Словінські" -> R.drawable.thirdh
-                "Мазурські озера" -> R.drawable.fourth
-                else -> 4
+                "Coca cola" -> R.drawable.first
+                "Sprite" -> R.drawable.second
+                "Fanta" -> R.drawable.thirdh
+                "Mojo" -> R.drawable.fourth
+                "Mirinda" -> R.drawable.fourth
+                else -> 5
             }
             val intent = Intent(this, SecondActivity::class.java).apply {
                 putExtra("test", id)
